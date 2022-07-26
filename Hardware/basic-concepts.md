@@ -33,3 +33,6 @@ Audio Card
 
 NIC (Network Interface Card)
 - Computers can have built in network cards, wireless cards or both. They can also have peripheral components.  
+
+Power Supply
+- Power Supplies come in different level of strengths to have sufficient power for the devices in the system, including drives, the video card and motherboard.
