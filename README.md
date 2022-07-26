@@ -36,19 +36,19 @@ Computing and Processing
 
 Units of Measure
 - Storage Units
- - Bit
- - Byte
- - KB (KiloByte)
- - MB (MegaByte)
- - GB (GigaByte)
- - TB (TeraByte)
- - PB (PetaByte)
+  - Bit
+  - Byte
+  - KB (KiloByte)
+  - MB (MegaByte)
+  - GB (GigaByte)
+  - TB (TeraByte)
+  - PB (PetaByte)
 - Throughput Units
- - Bps (Bits per second)
- - Kbps (Kilobits per second)
- - Mbps (Megabits per second)
- - Gbps (Gigabits per second)
- - Tbps (Terabits per second)
+  - Bps (Bits per second)
+  - Kbps (Kilobits per second)
+  - Mbps (Megabits per second)
+  - Gbps (Gigabits per second)
+  - Tbps (Terabits per second)
 - Processing Speeds
- - MHz (MegaHertz)
- - GHz (GigaHertz)
+  - MHz (MegaHertz)
+  - GHz (GigaHertz)
