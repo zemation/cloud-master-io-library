@@ -1,4 +1,22 @@
-# Common Internal Components
+# The Library Comparison
+
+An analogy I created to help non-technical people understand the basic function of computer hardware is "a library."
+
+Motherboard/Case/PowerSupply
+- For simplicities sake, these items are being grouped together here.  
+- The outside and inside floorplan of the library.  And the power used light it.  It's what connects all the different parts.  
+
+CPU
+- In this particular analogy, you as a person are the processor. You do all the work.  If you have a team, you are more of a multi-core processor.  It could be said that you are the operating system as well to an extent.  
+- As the processor you are the one that goes to the shelves to get your books. Or looks through them on the table so you have room.  You talk to librarians to get a book from another library perhaps.  
+
+Hard Drive
+- The shelves that hold the books are themselves the folders on your computer that containers your files.  You go to the bookshelf, get the file/book and return to the table to use it and when you are done, you close it and put it back on the shelf.
+
+Memory
+- The table you are working at is the memory.  It's where the things you need to use sit.  The bigger the table, the more room you have and the more files/books you can fit on the table at the same time saving the time from going back and forth to the shelves.
+
+## Common Internal Components
 
 Mother/System Board
 - The motherboards is what connects everything in the system to everthing else.  It is comprised of connectors for peripheral devices, video cards, power, memory, cpu, hard drives, sound, and network.  
