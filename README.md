@@ -1,3 +1,7 @@
+[logo]: https://cloud-master.io/wp-content/uploads/2021/08/cropped-logo-favicon.png "Cloud-Master.IO"
+
+
+
 - 👋 Hi, I’m @cloud-master-io
 - 👀 I’m interested in ...developing out a subscription user service to allow users to play in a virtual environment for specific resources at an affordable cost
 - 🌱 I’m currently learning ... which platofrm to build this out on
