@@ -1,6 +1,6 @@
 # Linux Essentials
 
-## Lesson 1-1
+## Lesson 1-1 Linux Evolution and Popular Operating Systems
 ### Introduction
 Linux is one of the most popular operating systems. Its development was started in 1991 by Linus Torvalds. The operating system was inspired by Unix, another operating system developed in the 1970s by AT&T Laboratories. Unix was geared towards small computers. At the time, “small” computers were considered machines that don’t need an entire hall with air conditioning and cost less than one million dollars. Later, they were considered as the machines that can be lifted by two people. At that time, an affordable Unix system was not readily available on computers such as office computers, which were tended to be based on the x86 platform. Therefore Linus, who was a student by that time, started to implement a Unix-like operating system which was supposed to run on this platform.
 
@@ -50,7 +50,7 @@ The term cloud computing refers to a standardized way of consuming computing res
 Linux is usually offered as part of Infrastructure as a Service (IaaS) offering. IaaS instances are virtual machines which are provisioned within minutes in the cloud. When starting an IaaS instance, an image is chosen which contains the data that is deployed to the new instance. Cloud providers offer various images containing ready to run installations of both popular Linux distributions as well as own versions of Linux. The cloud user chooses an image containing their preferred distribution and can access a cloud instance running this distribution shortly after. Most cloud providers add tools to their images to adjust the installation to a specific cloud instance. These tools can, for example, extend the file systems of the image to fit the actual hard disk of the virtual machine.
 
 
-## Lesson 1-2
+## Lesson 1-2 Major Open Source Applications
 
 An application is a computer program whose purpose is not directly tied to the inner workings of the computer, but with tasks performed by the user. Linux distributions offer many application options to perform a variety of tasks, such as office applications, web browsers, multimedia players and editors, etc. There is often more than one application or tool to perform a particular job. It is up to the user to choose the application which best fits their needs.
 
@@ -355,7 +355,7 @@ PHP
 
 C and Java are compiled languages. In order to be executed by the system, source code written in C is converted to binary machine code, whereas Java source code is converted to bytecode executed in a special software environment called Java Virtual Machine. JavaScript, Perl, Shell script, Python and PHP are all interpreted languages, which are also called scripting languages.
 
-## Lesson 1-3
+## Lesson 1-3 Open Source Software and Licensing
 
 While the terms free software and open source software are widely used, there are still some misconceptions about their meaning. In particular, the concept of “freedom” needs closer examination. Let’s start with the definition of the two terms.
 
@@ -491,7 +491,7 @@ Last but not least, the model of developing customer-specific extensions into fr
 
 One thing should have become clear: Although free software is usually available free of charge, numerous business models have been created in their environment, which are constantly modified and extended by countless freelancers and companies worldwide in a very creative form, which ultimately also ensures the continued existence of the entire FLOSS movement.
 
-## Lesson 1-4
+## Lesson 1-4 ICT Skills and Working in Linux
 
 There was a time when working with Linux on the desktop was considered hard since the system lacked many of the more polished desktop applications and configuration tools that other operating systems had. Some of the reasons for that were that Linux was a lot younger than many other operating systems. That being said, it was easier to start by developing more essential command line applications and just leave the more complex graphical tools for later. In the beginning, since Linux was first targeted to more advanced users, that should not have been a problem. But those days are long gone. Today, Linux desktop environments are very mature, leaving nothing to be desired as regards to features and ease of use. Nevertheless, the command line is still considered a powerful tool used each and every day by advanced users. In this lesson we’ll take a look at some of the basic desktop skills you will need in order to choose the best tool for the right job, including getting to the command line.
 
