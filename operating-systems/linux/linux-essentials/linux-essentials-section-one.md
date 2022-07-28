@@ -235,56 +235,58 @@ For a long time, the most used office suite in Linux was the OpenOffice.org suit
 The two projects have the same basic features and are compatible with the document formats from Microsoft Office. However, the preferred document format is the Open Document Format, a fully open and ISO standardized file format. The use of ODF files ensures that documents can be transferred between operating systems and applications from different vendors, such as Microsoft Office. The main applications offered by OpenOffice/LibreOffice are:
 
 Writer
-Text editor
+- Text editor
 
 Calc
-Spreadsheets
+- Spreadsheets
 
 Impress
-Presentations
+- Presentations
 
 Draw
-Vector drawing
+- Vector drawing
 
 Math
-Math formulas
+- Math formulas
 
 Base
-Database
+- Database
 
 Both LibreOffice and Apache OpenOffice are open source software, but LibreOffice is licensed under LGPLv3 and Apache OpenOffice is licensed under Apache License 2.0. The licensing distinction implies that LibreOffice can incorporate improvements made by Apache OpenOffice, but Apache OpenOffice cannot incorporate improvements made by LibreOffice. That, and a more active community of developers, are the reason most distributions adopt LibreOffice as their default office suite.
 
-Web Browsers
+### Web Browsers
 For most users, the main purpose of a computer is to provide access to the Internet. Nowadays, web pages can act as a full featured app, with the advantage of being accessible from anywhere, without the need of installing extra software. That makes the web browser the most important application of the operating system, at least for the average user.
 
-Tip
+```
+### Tip
 One of the best sources for learning about web development is the MDN Web Docs, available at https://developer.mozilla.org/. Maintained by Mozilla, the site is full of tutorials for beginners and reference materials on most modern web technologies.
+```
 
 The main web browsers in the Linux environment are Google Chrome and Mozilla Firefox. Chrome is a web browser maintained by Google but is based on the open source browser named Chromium, which can be installed using the distribution’s package manager and is fully compatible with Chrome. Maintained by Mozilla, a non-profit organization, Firefox is a browser whose origins are linked to Netscape, the first popular web browser to adopt the open source model. The Mozilla Foundation is deeply involved with the development of the open standards underlying the modern web.
 
 Mozilla also develops other applications, like the e-mail client Thunderbird. Many users opt to use webmail instead of a dedicated email application, but a client like Thunderbird offers extra features and integrates best with other applications on the desktop.
 
-Multimedia
+### Multimedia
 Compared to the available web applications, desktop applications are still the best option for the creation of multimedia content. Multimedia related activities like video rendering often require high amounts of system resources, which are best managed by a local desktop application. Some of the most popular multimedia applications for the Linux environment and their uses are listed below.
 
 Blender
-A 3D renderer to create animations. Blender can also be used to export 3D objects to be printed by a 3D printer.
+- A 3D renderer to create animations. Blender can also be used to export 3D objects to be printed by a 3D printer.
 
 GIMP
-A full-featured image editor, which can be compared with Adobe Photoshop, but has its own concepts and tools to work with images. GIMP can be used to create, edit and save most bitmap files, like JPEG, PNG, GIF, TIFF and many others.
+- A full-featured image editor, which can be compared with Adobe Photoshop, but has its own concepts and tools to work with images. GIMP can be used to create, edit and save most bitmap files, like JPEG, PNG, GIF, TIFF and many others.
 
 Inkscape
-A vector graphics editor, similar to Corel Draw or Adobe Illustrator. Inkscape’s default format is SVG, which is an open standard for vector graphics. SVG files can be opened by any web browser and, due to its nature as a vector graphic, it can be used in flexible layouts of web pages.
+- A vector graphics editor, similar to Corel Draw or Adobe Illustrator. Inkscape’s default format is SVG, which is an open standard for vector graphics. SVG files can be opened by any web browser and, due to its nature as a vector graphic, it can be used in flexible layouts of web pages.
 
 Audacity
-An audio editor. Audacity can be used to filter, to apply effects and to convert between many different audio formats, like MP3, WAV, OGG, FLAC, etc.
+- An audio editor. Audacity can be used to filter, to apply effects and to convert between many different audio formats, like MP3, WAV, OGG, FLAC, etc.
 
-ImageMagick
+- ImageMagick
 ImageMagick is a command line tool to convert and edit most image file types. It can also be used to create PDF documents from image files and vice versa.
 
 There are also many applications dedicated to multimedia playback. The most popular application for video playback is VLC, but some users prefer other alternatives, like smplayer. Local music playback also has many options, like Audacious, Banshee and Amarok, which can also manage a collection of local sound files.
 
-Server Programs
+### Server Programs
 When a web browser loads a page from a website, it actually connects to a remote computer and asks for a specific piece of information. In that scenario, the computer running the web browser is called the client and the remote computer is called the server.
 
 The server computer, which can be an ordinary desktop computer or specialized hardware, needs a specific program to manage each type of information it will provide. Regarding serving web pages, most servers around the world deploy open source server programs. This particular server program is called an HTTP server (HTTP stands for Hyper Text Transfer Protocol) and the most popular ones are Apache, Nginx and lighttpd.
@@ -297,7 +299,7 @@ For instance, when a dynamic page is requested, the HTTP server usually queries 
 
 A database is an organized set of information. A database server stores contents in a formatted fashion, making it possible to read, write and link large amounts of data reliably and at great speed. Open source database servers are used in many applications, not only on the Internet. Even local applications can store data by connecting to a local database server. The most common type of database is the relational database, where the data is organized in predefined tables. The most popular open source relational databases are MariaDB (originated from MySQL) and PostgreSQL.
 
-Data Sharing
+### Data Sharing
 In local networks, like the ones found in offices and homes, it is desirable that computers not only should be able to access the Internet, but also should be able to communicate with each other. Sometimes a computer acts as a server, sometimes the same computer acts as a client. That is necessary when one wants to access files on another computer in the network — for instance, access a file stored on a desktop computer from a portable device — without the hassle of copying it to a USB drive or the like.
 
 Between Linux machines, NFS (Network File System) is often used. The NFS protocol is the standard way to share file systems in networks equipped only with Unix/Linux machines. With NFS, a computer can share one or more of its directories with specific computers on the network, so they can read and write files in these directories. NFS can even be used to share an entire operating system’s directory tree with clients that will use it to boot from. These computers, called thin clients, are mostly often used in large networks to avoid the maintenance of each individual operating system on each machine.
@@ -310,7 +312,7 @@ If the goal is to implement a cloud computing solution able to provide various m
 
 Both ownCloud and Nextcloud offer a paid version with extra features and extended support. What makes them different from other commercial solutions is the ability to install Nextcloud or ownCloud on a private server, free of charge, avoiding keeping sensitive data on an unknown server. As all the services depend on HTTP communication and are written in PHP, the installation must be performed on a previous configured web server, like Apache. If you consider installing ownCloud or Nextcloud on your own server, make sure to also enable HTTPS to encrypt all connections to your cloud.
 
-Network Administration
+### Network Administration
 Communication between computers is only possible if the network is working correctly. Normally, the network configuration is done by a set of programs running on the router, responsible for setting up and checking the network availability. In order to achieve this, two basic network services are used: DHCP (Dynamic Host Configuration Protocol) and DNS (Domain Name System).
 
 DHCP is responsible for assigning an IP address to the host when a network cable is connected or when the device enters a wireless network. When connecting to the Internet, the ISP’s DHCP server will provide an IP address to the requesting device. A DHCP server is very useful in local area networks also, to automatically provide IP addresses to all connected devices. If DHCP is not configured or if it’s not working properly, it would be necessary to manually configure the IP address of each device connected to the network. It is not practical to manually set the IP addresses on large networks or even in small networks, that’s why most network routers come with a DHCP server pre-configured by default.
@@ -319,7 +321,7 @@ The IP address is required to communicate with another device on an IP network, 
 
 Both DHCP and DNS settings can be modified by entering the web interface provided by the router. For instance, it is possible to restrict the IP assignment only to known devices or associate a fixed IP address to specific machines. It’s also possible to change the default DNS server provided by the ISP. Some third-party DNS servers, like the ones provided by Google or OpenDNS, can sometimes provide faster responses and extra features.
 
-Programming Languages
+### Programming Languages
 All computer programs (client and server programs, desktop applications and the operating system itself) are made using one or more programming languages. Programs can be a single file or a complex system of hundreds of files, which the operating system treats as an instruction sequence to be interpreted and performed by the processor and other devices.
 
 There are numerous programming languages for very different purposes and Linux systems provide a lot of them. Since open source software also includes the sources of the programs, Linux systems offer developers perfect conditions to understand, modify or create software according to their own needs.
@@ -331,38 +333,32 @@ In interpreted languages, the program does not need to be previously compiled. I
 Here some of the most popular programming languages:
 
 JavaScript
-JavaScript is a programming language mostly used in web pages. In its origins, JavaScript applications were very simple, like form validation routines. As for today, JavaScript is considered a first class language and it is used to create very complex applications not only on the web, but on servers and mobile devices.
+- JavaScript is a programming language mostly used in web pages. In its origins, JavaScript applications were very simple, like form validation routines. As for today, JavaScript is considered a first class language and it is used to create very complex applications not only on the web, but on servers and mobile devices.
 
 C
-The C programming language is closely related with operating systems, particularly Unix, but it is used to write any kind of program to almost any kind of device. The great advantages of C are flexibility and speed. The same source code written in C can be compiled to run in different platforms and operating systems, with little or no modification. After being compiled, however, the program will run only in the targeted system.
+- The C programming language is closely related with operating systems, particularly Unix, but it is used to write any kind of program to almost any kind of device. The great advantages of C are flexibility and speed. The same source code written in C can be compiled to run in different platforms and operating systems, with little or no modification. After being compiled, however, the program will run only in the targeted system.
 
 Java
-The main aspect of Java is that programs written in this language are portable, which means that the same program can be executed in different operating systems. Despite the name, Java is not related to JavaScript.
+- The main aspect of Java is that programs written in this language are portable, which means that the same program can be executed in different operating systems. Despite the name, Java is not related to JavaScript.
 
 Perl
-Perl is a programming language most used to process text content. It has a strong regular expressions emphasis, which makes Perl a language suited for text filtering and parsing.
+- Perl is a programming language most used to process text content. It has a strong regular expressions emphasis, which makes Perl a language suited for text filtering and parsing.
 
 Shell
-The shell, particularly the Bash shell, is not just a programming language, but an interactive interface to run other programs. Shell programs, known as shell scripts, can automate complex or repetitive tasks on the command line environment.
+- The shell, particularly the Bash shell, is not just a programming language, but an interactive interface to run other programs. Shell programs, known as shell scripts, can automate complex or repetitive tasks on the command line environment.
 
 Python
-Python is a very popular programming language among students and professionals not directly involved with computer science. Whilst having advanced features, Python is a good way to start learning programming for its easy to use approach.
+- Python is a very popular programming language among students and professionals not directly involved with computer science. Whilst having advanced features, Python is a good way to start learning programming for its easy to use approach.
 
 PHP
-PHP is most used as a server side scripting language for generating content for the web. Most online HTML pages are not static files, but dynamic content generated by the server from various sources, like databases. PHP programs — sometimes just called PHP pages or PHP scripts — are often used to generate this kind of content. The term LAMP comes from the combination of a Linux operating system, an Apache HTTP server, a MySQL (or MariaDB) database and PHP programming. LAMP servers are a very popular solution for running web servers. Besides PHP, all of the programming languages described before can be used to implement such applications too.
+- PHP is most used as a server side scripting language for generating content for the web. Most online HTML pages are not static files, but dynamic content generated by the server from various sources, like databases. PHP programs — sometimes just called PHP pages or PHP scripts — are often used to generate this kind of content. The term LAMP comes from the combination of a Linux operating system, an Apache HTTP server, a MySQL (or MariaDB) database and PHP programming. LAMP servers are a very popular solution for running web servers. Besides PHP, all of the programming languages described before can be used to implement such applications too.
 
 C and Java are compiled languages. In order to be executed by the system, source code written in C is converted to binary machine code, whereas Java source code is converted to bytecode executed in a special software environment called Java Virtual Machine. JavaScript, Perl, Shell script, Python and PHP are all interpreted languages, which are also called scripting languages.
 
-
-
-
-
-
-
-
-
-
+___
 
 This documentation is provided by the Linux Professional Institute
+
 [Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
 [Get the Full PDF](https://learning.lpi.org/en/learning-materials/010-160/)
