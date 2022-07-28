@@ -87,6 +87,7 @@ The following NEW packages will be installed:
 ```
 At this point the package will be downloaded and installed on the system. Any dependencies that the package eventually needs will also be downloaded and installed:
 
+```
 Need to get 184 kB of archives.
 After this operation, 741 kB of additional disk space will be used.
 Get:1 http://archive.raspbian.org/raspbian stretch/main armhf figlet armhf 2.2.5-2 [184 kB]
@@ -98,6 +99,7 @@ Unpacking figlet (2.2.5-2) ...
 Setting up figlet (2.2.5-2) ...
 update-alternatives: using /usr/bin/figlet-figlet to provide /usr/bin/figlet (figlet) in auto mode
 Processing triggers for man-db (2.7.6.1-2) ...
+```
 After the download is finished, all files are copied to the proper locations, any additional configuration will be performed and the command will become available:
 ```
 $ figlet Awesome!
@@ -109,6 +111,7 @@ $ figlet Awesome!
 ```
 In distributions based on RPM packages, searches are performed using yum search package_name or dnf search package_name. Let’s say you want to display some text in a more irreverent way, followed by a cartoonish cow, but you are not sure about the package that can perform that task. As with the DEB packages, the RPM search commands accept descriptive terms:
 
+```
 $ yum search speaking cow
 Last metadata expiration check: 1:30:49 ago on Tue 23 Apr 2019 11:02:33 PM -03
 ==================== Name & Summary Matched: speaking, cow ====================
@@ -131,8 +134,9 @@ Install  1 Package
 Total download size: 46 k
 Installed size: 76 k
 Is this ok [y/N]: y
+```
 Once again, the desired package and all its possible dependencies will be downloaded and installed:
-
+```
 Downloading Packages:
 cowsay-3.04-10.fc28.noarch.rpm                    490 kB/s |  46 kB     00:00
 ==============================================================================
@@ -151,8 +155,9 @@ Installed:
 cowsay.noarch 3.04-10.fc28
 
 Complete!
+```
 The command cowsay does exactly what its name implies:
-
+```
 $ cowsay "Brought to you by yum"
  _______________________
 < Brought to you by yum >
@@ -162,11 +167,13 @@ $ cowsay "Brought to you by yum"
             (__)\       )\/\
                 ||----w |
                 ||     ||
+```
 Although they may seem useless, commands figlet and cowsay provide a way to draw the attention of other users to relevant information.
 
-Package Removal
+### Package Removal
 The same commands used to install packages are used to remove them. All the commands accept the remove keyword to uninstall an installed package: apt-get remove package_name or apt remove package_name for DEB packages and yum remove package_name or dnf remove package_name for RPM packages. The sudo command is also needed to perform the removal. For example, to remove the previously installed package figlet from a DEB-based distribution:
 
+```
 $ sudo apt-get remove figlet
 Reading package lists... Done
 Building dependency tree
@@ -176,13 +183,16 @@ The following packages will be REMOVED:
 0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
 After this operation, 741 kB disk space will be freed.
 Do you want to continue? [Y/n] Y
+```
 After confirming the operation, the package is erased from the system:
-
+```
 (Reading database ... 115775 files and directories currently installed.)
 Removing figlet (2.2.5-2) ...
 Processing triggers for man-db (2.7.6.1-2) ...
+```
 A similar procedure is performed on an RPM-based system. For example, to remove the previously installed package cowsay from an RPM-based distribution:
 
+```
 $ sudo yum remove cowsay
 Dependencies resolved.
 ==================================================================================
@@ -197,8 +207,9 @@ Remove  1 Package
 
 Freed space: 76 k
 Is this ok [y/N]: y
+```
 Likewise, a confirmation is requested and the package is erased from the system:
-
+```
 Running transaction check
 Transaction check succeeded.
 Running transaction test
@@ -213,9 +224,10 @@ Removed:
   cowsay.noarch 3.04-10.fc28
 
 Complete!
+```
 The configuration files of the removed packages are kept on the system, so they can be used again if the package is reinstalled in the future.
 
-Office Applications
+### Office Applications
 Office applications are used for editing files such as texts, presentations, spreadsheets and other formats commonly used in an office environment. These applications are usually organised in collections called office suites.
 
 For a long time, the most used office suite in Linux was the OpenOffice.org suite. OpenOffice.org was an open source version of the StarOffice suite released by Sun Microsystems. A few years later Sun was acquired by Oracle Corporation, which in turn transferred the project to the Apache Foundation and OpenOffice.org was renamed to Apache OpenOffice. Meanwhile, another office suite based on the same source code was released by the Document Foundation, which named it LibreOffice.
