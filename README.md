@@ -12,6 +12,9 @@ We have 20+ years in the computer industry with Certified Professionals in Micro
 
 That is with certifications.  Industry Certifications allow you to focus on one subject at a time, without the cost of Post-Secondary tuition and only pay for any resources you get that have price, and the certification (unless you have a company that will purchase voucher)
 
+What we hope to do is provide supplemental material.  There already are plent of service providers and other sources that can and will provide much more detail.  We even recommend some in this repo.  Our goal has always been to get people to the resources to help them move up in their career.  
+
+In some of these topics we find that while we will try to offer this information, in some cases referring to the official documentation or white papers will provide better information.
 
 
 <!---
@@ -19,5 +22,5 @@ cloud-master-io/cloud-master-io is a ✨ special ✨ repository because its `REA
 You can click the Preview link to take a look at your changes.
 --->
 
-
+https://devhints.io/
 
