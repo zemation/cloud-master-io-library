@@ -1,4 +1,7 @@
+
 # Cloud Basics
+
+### [CloudInit](https://cloudinit.readthedocs.io/en/latest/)
 
 ### Service Models
 
@@ -28,7 +31,31 @@
  - Rapid elasticity
  - High availability
  - File Synchronization
+ - Elasticity
+ - Self-Service
+ - Scalability
+ - Broad Networks
+ - Pay as you go options
+ - Fault Tolerance
+ - Disaster Recovery
+ - Recovery Objectives
+  - RPO
+  - RTO
 - Desktop Virtualization
  - Virtual desktop infrastructure (VDI) on premises
  - VDI in the cloud
 
+### Cloud Networking
+- Connection Types
+ - Direct connect
+ - VPN
+- Access Types
+ - RDP
+ - SSH
+ - HTTPS
+- Software Defined Networking (SDN)
+- Load Balancing
+- DNS
+- Firewall
+
+### Cloud Storage
