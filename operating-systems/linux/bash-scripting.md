@@ -1,3 +1,6 @@
-http://mywiki.wooledge.org/BashGuide
+### [Bash Guide](http://mywiki.wooledge.org/BashGuide)
 
-https://wiki.bash-hackers.org/
+### [Bash Hackers](https://wiki.bash-hackers.org/)
+
+
+### [Learn Shell](https://www.learnshell.org/)
