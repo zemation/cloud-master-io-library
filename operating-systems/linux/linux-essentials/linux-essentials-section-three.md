@@ -630,97 +630,137 @@ Most of the meta-characters are self-explanatory, but they can become tricky whe
 ## Lesson 3.3 Turning Commands into a Script
 We have been learning to execute commands from the shell thus far, but we can also enter commands into a file, and then set that file to be executable. When the file is executed, those commands are run one after the other. These executable files are called scripts, and they are an absolutely crucial tool for any Linux system administrator. Essentially, we can consider Bash to be a programming language as well as a shell.
 
-Printing Output
-Let’s begin by demonstrating a command that you may have seen in previous lessons: echo will print an argument to standard output.
+### Printing Output
+Let’s begin by demonstrating a command that you may have seen in previous lessons: `echo` will print an argument to standard output.
 
+```
 $ echo "Hello World!"
 Hello World!
-Now, we will use file redirection to send this command to a new file called new_script.
+```
 
+Now, we will use file redirection to send this command to a new file called `new_script`.
+
+```
 $ echo 'echo "Hello World!"' > new_script
 $ cat new_script
 echo "Hello World!"
-The file new_script now contains the same command as before.
+```
 
-Making a Script Executable
+The file `new_script` now contains the same command as before.
+
+### Making a Script Executable
 Let’s demonstrate some of the steps required to make this file execute the way we expect it to. A user’s first thought might be to simply type the name of the script, the way they might type in the name of any other command:
 
+```
 $ new_script
 /bin/bash: new_script: command not found
-We can safely assume that new_script exists in our current location, but notice that the error message isn’t telling us that the file doesn’t exist, it is telling us that the command doesn’t exist. It would be useful to discuss how Linux handles commands and executables.
+```
 
-Commands and PATH
-When we type the ls command into the shell, for example, we are executing a file called ls that exists in our filesystem. You can prove this by using which:
+We can safely assume that `new_script` exists in our current location, but notice that the error message isn’t telling us that the file doesn’t exist, it is telling us that the command doesn’t exist. It would be useful to discuss how Linux handles commands and executables.
 
+
+
+### Commands and `PATH`
+When we type the `ls` command into the shell, for example, we are executing a file called `ls` that exists in our filesystem. You can prove this by using `which`:
+
+```
 $ which ls
 /bin/ls
-It would quickly become tiresome to type in the absolute path of ls every time we wish to look at the contents of a directory, so Bash has an environment variable which contains all the directories where we might find the commands we wish to run. You can view the contents of this variable by using echo.
+```
 
+It would quickly become tiresome to type in the absolute path of `ls` every time we wish to look at the contents of a directory, so Bash has an environment variable which contains all the directories where we might find the commands we wish to run. You can view the contents of this variable by using `echo`.
+
+```
 $ echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-Each of these locations is where the shell expects to find a command, delimited with colons (:). You will notice that /bin is present, but it is safe to assume that our current location is not. The shell will search for new_script in each of these directories, but it will not find it and therefore will throw the error we saw above.
+```
 
-There are three solutions to this issue: we can move new_script into one of the PATH directories, we can add our current directory to PATH, or we can change the way we attempt to call the script. The latter solution is easiest, it simply requires us to specify the current location when calling the script using dot slash (./).
+Each of these locations is where the shell expects to find a command, delimited with colons (`:`). You will notice that `/bin` is present, but it is safe to assume that our current location is not. The shell will search for `new_script` in each of these directories, but it will not find it and therefore will throw the error we saw above.
 
+There are three solutions to this issue: we can move `new_script` into one of the `PATH` directories, we can add our current directory to `PATH`, or we can change the way we attempt to call the script. The latter solution is easiest, it simply requires us to specify the current location when calling the script using dot slash (`./`).
+
+
+```
 $ ./new_script
 /bin/bash: ./new_script: Permission denied
+```
+
 The error message has changed, which indicates that we have made some progress.
 
-Execute Permissions
-The first investigation a user should do in this case is to use ls -l to look at the file:
+### Execute Permissions
+The first investigation a user should do in this case is to use `ls -l` to look at the file:
 
+```
 $ ls -l new_script
 -rw-rw-r-- 1 user user 20 Apr 30 12:12 new_script
-We can see that the permissions for this file are set to 664 by default. We have not set this file to have execute permissions yet.
+```
 
+We can see that the permissions for this file are set to `664` by default. We have not set this file to have execute permissions yet.
+
+```
 $ chmod +x new_script
 $ ls -l new_script
 -rwxrwxr-x 1 user user 20 Apr 30 12:12 new_script
+```
+
 This command has given execute permissions to all users. Be aware that this might be a security risk, but for now this is an acceptable level of permission.
 
+```
 $ ./new_script
 Hello World!
+```
+
 We are now able to execute our script.
 
-Defining the Interpreter
-As we have demonstrated, we were able to simply enter text into a file, set it as an executable, and run it. new_script is functionally still a normal text file, but we managed to have it be interpreted by Bash. But what if it is written in Perl, or Python?
+### Defining the Interpreter
+As we have demonstrated, we were able to simply enter text into a file, set it as an executable, and run it. `new_script` is functionally still a normal text file, but we managed to have it be interpreted by Bash. But what if it is written in Perl, or Python?
 
-It is very good practice to specify the type of interpreter we want to use in the first line of a script. This line is called a bang line or more commonly a shebang. It indicates to the system how we want this file to be executed. Since we are learning Bash, we will be using the absolute path to our Bash executable, once again using which:
+It is very good practice to specify the type of interpreter we want to use in the first line of a script. This line is called a bang line or more commonly a shebang. It indicates to the system how we want this file to be executed. Since we are learning Bash, we will be using the absolute path to our Bash executable, once again using `which`:
 
+```
 $ which bash
 /bin/bash
-Our shebang starts with a hash sign and exclamation mark, followed by the absolute path above. Let’s open new_script in a text editor and insert the shebang. Let’s also take the opportunity to insert a comment into our script. Comments are ignored by the interpreter. They are written for the benefit of other users wishing to understand your script.
+```
 
+Our shebang starts with a hash sign and exclamation mark, followed by the absolute path above. Let’s open `new_script` in a text editor and insert the shebang. Let’s also take the opportunity to insert a comment into our script. Comments are ignored by the interpreter. They are written for the benefit of other users wishing to understand your script.
+
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to document all scripts.
 
 echo "Hello World!"
-We will make one additional change to the filename as well: we will save this file as new_script.sh. The file suffix ".sh" does not change the execution of the file in any way. It is a convention that bash scripts be labelled with .sh or .bash in order to identify them more easily, the same way that Python scripts are usually identified with the suffix .py.
+```
 
-Common Text Editors
-Linux users often have to work in an environment where graphical text editors are not available. It is therefore highly recommended to develop at least some familiarity with editing text files from the command line. Two of the most common text editors are vi and nano.
+We will make one additional change to the filename as well: we will save this file as `new_script.sh`. The file suffix ".sh" does not change the execution of the file in any way. It is a convention that bash scripts be labelled with `.sh` or `.bash` in order to identify them more easily, the same way that Python scripts are usually identified with the suffix `.py`.
+
+### Common Text Editors
+Linux users often have to work in an environment where graphical text editors are not available. It is therefore highly recommended to develop at least some familiarity with editing text files from the command line. Two of the most common text editors are `vi` and `nano`.
 
 vi
-vi is a venerable text editor and is installed by default on almost every Linux system in existence. vi spawned a clone called vi IMproved or vim which adds some functionality but maintains the interface of vi. While working with vi is daunting for a new user, the editor is popular and well-loved by users who learn its many features.
+`vi` is a venerable text editor and is installed by default on almost every Linux system in existence. `vi` spawned a clone called vi IMproved or `vim` which adds some functionality but maintains the interface of `vi`. While working with `vi` is daunting for a new user, the editor is popular and well-loved by users who learn its many features.
 
-The most important difference between vi and applications such as Notepad is that vi has three different modes. On startup, the keys H, J, K and L are used to navigate, not to type. In this navigation mode, you can press I to enter insert mode. At this point, you may type normally. To exit insert mode, you press Esc to return to navigation mode. From navigation mode, you can press : to enter command mode. From this mode, you can save, delete, quit or change options.
+The most important difference between `vi` and applications such as Notepad is that `vi` has three different modes. On startup, the keys `H`, `J`, `K` and `L` are used to navigate, not to type. In this navigation mode, you can press `I` to enter insert mode. At this point, you may type normally. To exit insert mode, you press Esc to return to navigation mode. From navigation mode, you can press `:` to enter command mode. From this mode, you can save, delete, quit or change options.
 
-While vi has a learning curve, the different modes can in time allow a savvy user to become more efficient than with other editors.
+While `vi` has a learning curve, the different modes can in time allow a savvy user to become more efficient than with other editors.
 
 nano
-nano is a newer tool, built to be simple and easier to use than vi. nano does not have different modes. Instead, a user on startup can begin typing, and uses Ctrl to access the tools printed at the bottom of the screen.
+`nano` is a newer tool, built to be simple and easier to use than `vi`. `nano` does not have different modes. Instead, a user on startup can begin typing, and uses `Ctrl` to access the tools printed at the bottom of the screen.
 
+```
                          [ Welcome to nano.  For basic help, type Ctrl+G. ]
 ^G Get Help   ^O Write Out  ^W Where Is   ^K Cut Text   ^J Justify    ^C Cur Pos    M-U Undo
 ^X Exit       ^R Read File  ^\ Replace    ^U Uncut Text ^T To Spell   ^_ Go To Line M-E Redo
+```
+
 Text editors are a matter of personal preference, and the editor that you choose to use will have no bearing on this lesson. But becoming familiar and comfortable with one or more text editors will pay off in the future.
 
-Variables
-Variables are an important part of any programming language, and Bash is no different. When you start a new session from the terminal, the shell already sets some variables for you. The PATH variable is an example of this. We call these environment variables, because they usually define characteristics of our shell environment. You can modify and add environment variables, but for now let’s focus on setting variables inside our script.
+### Variables
+Variables are an important part of any programming language, and Bash is no different. When you start a new session from the terminal, the shell already sets some variables for you. The `PATH` variable is an example of this. We call these environment variables, because they usually define characteristics of our shell environment. You can modify and add environment variables, but for now let’s focus on setting variables inside our script.
 
 We will modify our script to look like this:
 
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to comment all scripts.
@@ -728,20 +768,26 @@ We will modify our script to look like this:
 username=Carol
 
 echo "Hello $username!"
-In this case, we have created a variable called username and we have assigned it the value of Carol. Please note that there are no spaces between the variable name, the equals sign, or the assigned value.
+```
 
-In the next line, we have used the echo command with the variable, but there is a dollar sign ($) in front of the variable name. This is important, since it indicates to the shell that we wish to treat username as a variable, and not just a normal word. By entering $username in our command, we indicate that we want to perform a substitution, replacing the name of a variable with the value assigned to that variable.
+In this case, we have created a variable called `username` and we have assigned it the value of `Carol`. Please note that there are no spaces between the variable name, the equals sign, or the assigned value.
+
+In the next line, we have used the `echo` command with the variable, but there is a dollar sign (`$`) in front of the variable name. This is important, since it indicates to the shell that we wish to treat `username` as a variable, and not just a normal word. By entering `$username` in our command, we indicate that we want to perform a substitution, replacing the name of a variable with the value assigned to that variable.
 
 Executing the new script, we get this output:
 
+```
 $ ./new_script.sh
 Hello Carol!
-Variable names must contain only alphanumeric characters or underscores, and are case sensitive. Username and username will be treated as separate variables.
+```
 
-Variable substitution may also have the format ${username}, with the addition of the { }. This is also acceptable.
+- Variable names must contain only alphanumeric characters or underscores, and are case sensitive. `Username` and `username` will be treated as separate variables.
 
-Variables in Bash have an implicit type, and are considered strings. This means that performing math functions in Bash is more complicated than it would be in other programming languages such as C/C++:
+- Variable substitution may also have the format `${username}`, with the addition of the `{ }`. This is also acceptable.
 
+- Variables in Bash have an implicit type, and are considered strings. This means that performing math functions in Bash is more complicated than it would be in other programming languages such as C/C++:
+
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to comment all scripts.
@@ -757,9 +803,12 @@ $ ./new_script.sh
 Hello Carol!
 2 + 4
 2+4
-Using Quotes with Variables
-Let’s make the following change to the value of our variable username:
+```
 
+### Using Quotes with Variables
+Let’s make the following change to the value of our variable `username`:
+
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to comment all scripts.
@@ -767,13 +816,20 @@ Let’s make the following change to the value of our variable username:
 username=Carol Smith
 
 echo "Hello $username!"
+```
+
 Running this script will give us an error:
 
+```
 $ ./new_script.sh
 ./new_script.sh: line 5: Smith: command not found
 Hello !
-Keep in mind that Bash is an interpreter, and as such it interprets our script line-by-line. In this case, it correctly interprets username=Carol to be setting a variable username with the value Carol. But it then interprets the space as indicating the end of that assignment, and Smith as being the name of a command. In order to have the space and the name Smith be included as the new value of our variable, we will put double quotes (") around the name.
+```
 
+Keep in mind that Bash is an interpreter, and as such it interprets our script line-by-line. In this case, it correctly interprets `username=Carol` to be setting a variable `username` with the value `Carol`. But it then interprets the space as indicating the end of that assignment, and `Smith` as being the name of a command. In order to have the space and the name `Smith` be included as the new value of our variable, we will put double quotes (`"`) around the name.
+
+
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to comment all scripts.
@@ -781,10 +837,16 @@ Keep in mind that Bash is an interpreter, and as such it interprets our script l
 username="Carol Smith"
 
 echo "Hello $username!"
+```
+
+```
 $ ./new_script.sh
 Hello Carol Smith!
-One important thing to note in Bash is that double quotes and single quotes (') behave very differently. Double quotes are considered “weak”, because they allow the interpreter to perform substitution inside the quotes. Single quotes are considered “strong”, because they prevent any substitution from occurring. Consider the following example:
+```
 
+One important thing to note in Bash is that double quotes and single quotes (`'`) behave very differently. Double quotes are considered “weak”, because they allow the interpreter to perform substitution inside the quotes. Single quotes are considered “strong”, because they prevent any substitution from occurring. Consider the following example:
+
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to comment all scripts.
@@ -793,14 +855,19 @@ username="Carol Smith"
 
 echo "Hello $username!"
 echo 'Hello $username!'
+```
+
+```
 $ ./new_script.sh
 Hello Carol Smith!
 Hello $username!
-In the second echo command, the interpreter has been prevented from substituting $username with Carol Smith, and so the output is taken literally.
+```
+In the second `echo` command, the interpreter has been prevented from substituting `$username` with `Carol Smith`, and so the output is taken literally.
 
-Arguments
-You are already familiar with using arguments in the Linux core utilities. For example, rm testfile contains both the executable rm and one argument testfile. Arguments can be passed to the script upon execution, and will modify how the script behaves. They are easily implemented.
+### Arguments
+You are already familiar with using arguments in the Linux core utilities. For example, `rm testfile` contains both the executable `rm` and one argument `testfile`. Arguments can be passed to the script upon execution, and will modify how the script behaves. They are easily implemented.
 
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to comment all scripts.
@@ -808,12 +875,18 @@ You are already familiar with using arguments in the Linux core utilities. For e
 username=$1
 
 echo "Hello $username!"
-Instead of assigning a value to username directly inside the script, we are assigning it the value of a new variable $1. This refers to the value of the first argument.
+```
 
+Instead of assigning a value to `username` directly inside the script, we are assigning it the value of a new variable `$1`. This refers to the value of the first argument.
+
+```
 $ ./new_script.sh Carol
 Hello Carol!
+```
+
 The first nine arguments are handled in this way. There are ways to handle more than nine arguments, but that is outside the scope of this lesson. We will demonstrate an example using just two arguments:
 
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to comment all scripts.
@@ -821,17 +894,24 @@ The first nine arguments are handled in this way. There are ways to handle more 
 username1=$1
 username2=$2
 echo "Hello $username1 and $username2!"
+```
+```
 $ ./new_script.sh Carol Dave
 Hello Carol and Dave!
-There is an important consideration when using arguments: In the example above, there are two arguments Carol and Dave, assigned to $1 and $2 respectively. If the second argument is missing, for example, the shell will not throw an error. The value of $2 will simply be null, or nothing at all.
+```
 
+There is an important consideration when using arguments: In the example above, there are two arguments `Carol` and `Dave`, assigned to `$1` and `$2` respectively. If the second argument is missing, for example, the shell will not throw an error. The value of `$2` will simply be null, or nothing at all.
+
+```
 $ ./new_script.sh Carol
 Hello Carol and !
+```
+
 In our case, it would be a good idea to introduce some logic to our script so that different conditions will affect the output that we wish to print. We will start by introducing another helpful variable and then move on to creating if statements.
 
-Returning the Number of Arguments
-While variables such as $1 and $2 contain the value of positional arguments, another variable $# contains the number of arguments.
-
+### Returning the Number of Arguments
+While variables such as `$1` and `$2` contain the value of positional arguments, another variable `$#` contains the number of arguments.
+```
 #!/bin/bash
 
 # This is our first comment. It is also good practice to comment all scripts.
@@ -840,22 +920,28 @@ username=$1
 
 echo "Hello $username!"
 echo "Number of arguments: $#."
+```
+
+```
 $ ./new_script.sh Carol Dave
 Hello Carol!
 Number of arguments: 2.
-Conditional Logic
+```
+
+### Conditional Logic
 The use of conditional logic in programming is a vast topic, and won’t be covered deeply in this lesson. We will focus on the syntax of conditionals in Bash, which differs from most other programming languages.
 
 Let’s begin by reviewing what we hope to achieve. We have a simple script which should be able to print a greeting to a single user. If there is anything other than one user, we should print an error message.
 
-The condition we are testing is the number of users, which is contained in the variable $#. We would like to know if the value of $# is 1.
+- The condition we are testing is the number of users, which is contained in the variable `$#`. We would like to know if the value of `$#` is `1`.
 
-If the condition is true, the action we will take is to greet the user.
+- If the condition is true, the action we will take is to greet the user.
 
-If the condition is false, we will print an error message.
+- If the condition is false, we will print an error message.
 
 Now that the logic is clear, we will focus on the syntax required to implement this logic.
 
+```
 #!/bin/bash
 
 # A simple script to greet a single user.
@@ -869,32 +955,37 @@ else
   echo "Please enter only one argument."
 fi
 echo "Number of arguments: $#."
-The conditional logic is contained between if and fi. The condition to test is located between square brackets [ ], and the action to take should the condition be true is indicated after then. Note the spaces between the square brackets and the logic contained. Omitting this space will cause errors.
+```
 
-This script will output either our greeting, or the error message. But it will always print the Number of arguments line.
+The conditional logic is contained between `if` and `fi`. The condition to test is located between square brackets `[ ]`, and the action to take should the condition be true is indicated after `then`. Note the spaces between the square brackets and the logic contained. Omitting this space will cause errors.
 
+This script will output either our greeting, or the error message. But it will always print the `Number of arguments` line.
+
+```
 $ ./new_script.sh
 Please enter only one argument.
 Number of arguments: 0.
 $ ./new_script.sh Carol
 Hello Carol!
 Number of arguments: 1.
-Take note of the if statement. We have used -eq to do a numerical comparison. In this case, we are testing that the value of $# is equal to one. The other comparisons we can perform are:
+```
 
--ne
-Not equal to
+Take note of the `if` statement. We have used `-eq` to do a numerical comparison. In this case, we are testing that the value of `$#` is equal to one. The other comparisons we can perform are:
 
--gt
-Greater than
+`-ne`
+- Not equal to
 
--ge
-Greater than or equal to
+`-gt`
+- Greater than
 
--lt
-Less than
+'-ge'
+- Greater than or equal to
 
--le
-Less than or equal to
+'-lt'
+- Less than
+
+'-le'
+- Less than or equal to
 
 
 
