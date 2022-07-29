@@ -1,4 +1,4 @@
-# Linux Essentials
+# Linux Essentials Section 1
 
 ## Lesson 1-1 Linux Evolution and Popular Operating Systems
 ### Introduction
@@ -258,8 +258,8 @@ Both LibreOffice and Apache OpenOffice are open source software, but LibreOffice
 For most users, the main purpose of a computer is to provide access to the Internet. Nowadays, web pages can act as a full featured app, with the advantage of being accessible from anywhere, without the need of installing extra software. That makes the web browser the most important application of the operating system, at least for the average user.
 
 ```
-### Tip
-One of the best sources for learning about web development is the MDN Web Docs, available at https://developer.mozilla.org/. Maintained by Mozilla, the site is full of tutorials for beginners and reference materials on most modern web technologies.
+Tip
+> One of the best sources for learning about web development is the MDN Web Docs, available at https://developer.mozilla.org/. Maintained by Mozilla, the site is full of tutorials for beginners and reference materials on most modern web technologies.
 ```
 
 The main web browsers in the Linux environment are Google Chrome and Mozilla Firefox. Chrome is a web browser maintained by Google but is based on the open source browser named Chromium, which can be installed using the distribution’s package manager and is fully compatible with Chrome. Maintained by Mozilla, a non-profit organization, Firefox is a browser whose origins are linked to Netscape, the first popular web browser to adopt the open source model. The Mozilla Foundation is deeply involved with the development of the open standards underlying the modern web.
