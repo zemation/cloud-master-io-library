@@ -1,4 +1,4 @@
-# Linux Essentials Section 1
+# Linux Essentials Topic 1: The Linux Community and a Career in Open Source
 
 ## Lesson 1-1 Linux Evolution and Popular Operating Systems
 ### Introduction

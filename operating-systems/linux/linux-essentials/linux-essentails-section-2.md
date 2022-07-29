@@ -1,4 +1,4 @@
-# Linux Essentials Section 2
+# Linux Essentials Topic 2: Finding Your Way On a Linux System
 
 ## Lesson 2-1 Command Line Basics
 

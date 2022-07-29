@@ -1,4 +1,4 @@
-# Linux Essentials Section 3
+# Linux Essentials Topic 3: The Power of the Command Line
 
 ## Lesson 3-1 Archiving Files on the Command Line
 
@@ -988,12 +988,292 @@ Take note of the `if` statement. We have used `-eq` to do a numerical comparison
 - Less than or equal to
 
 
+In the last section, we used this simple example to demonstrate Bash scripting:
 
+```
+#!/bin/bash
 
+# A simple script to greet a single user.
 
+if [ $# -eq 1 ]
+then
+  username=$1
 
+  echo "Hello $username!"
+else
+  echo "Please enter only one argument."
+fi
+echo "Number of arguments: $#."
+```
 
+- All scripts should begin with a shebang, which defines the path to the interpreter.
+- All scripts should include comments to describe their use.
+- This particular script works with an argument, which is passed to the script when it is called.
+- This script contains an if statement, which tests the conditions of a built-in variable `$#`. This variable is set to the number of arguments.
+- If the number of arguments passed to the script equals 1, then the value of the first argument is passed to a new variable called `username` and the script echoes a greeting to the user. Otherwise, an error message is displayed.
+- Finally, the script echoes the number of arguments. This is useful for debugging.
 
+This is a useful example to begin explaining some of the other features of Bash scripting.
+
+### Exit Codes
+You will notice that our script has two possible states: either it prints `"Hello <user>!"` or it prints an error message. This is quite normal for many of our core utilities. Consider `cat`, which you are no doubt becoming very familiar with.
+
+Let’s compare a successful use of `cat` with a situation where it fails. A reminder that our example above is a script called `new_script.sh`.
+
+```
+$ cat -n new_script.sh
+
+     1	#!/bin/bash
+     2
+     3	# A simple script to greet a single user.
+     4
+     5	if [ $# -eq 1 ]
+     6	then
+     7	  username=$1
+     8
+     9	  echo "Hello $username!"
+    10	else
+    11	  echo "Please enter only one argument."
+    12	fi
+    13	echo "Number of arguments: $#."
+```
+
+This command succeeds, and you will notice that the `-n` flag has also printed line numbers. These are very helpful when debugging scripts, but please note that they are not part of the script.
+
+Now we are going to check the value of a new built-in variable `$?`. For now, just notice the output:
+
+```
+$ echo $?
+0
+```
+Now let’s consider a situation where `cat` will fail. First we will see an error message, and then check the value of `$?`.
+
+```
+$ cat -n dummyfile.sh
+cat: dummyfile.sh: No such file or directory
+$ echo $?
+1
+```
+
+The explanation for this behaviour is this: any execution of the `cat` utility will return an exit code. An exit code will tell us if the command succeeded, or experienced an error. An exit code of zero indicates that the command completed successfully. This is true for almost every Linux command that you work with. Any other exit code will indicate an error of some kind. The exit code of the last command to run will be stored in the variable `$?`.
+
+Exit codes are usually not seen by human users, but they are very useful when writing scripts. Consider a script where we may be copying files to a remote network drive. There are many ways that the copy task may have failed: for example our local machine might not be connected to the network, or the remote drive might be full. By checking the exit code of our copy utility, we can alert the user to problems when running the script.
+
+It is very good practice to implement exit codes, so we will do this now. We have two paths in our script, a success and a failure. Let’s use zero to indicate success, and one to indicate failure.
+
+```
+     1	#!/bin/bash
+     2
+     3	# A simple script to greet a single user.
+     4
+     5	if [ $# -eq 1 ]
+     6	then
+     7	  username=$1
+     8
+     9	  echo "Hello $username!"
+    10	  exit 0
+    11	else
+    12	  echo "Please enter only one argument."
+    13	  exit 1
+    14	fi
+    15	echo "Number of arguments: $#."
+```
+```
+$ ./new_script.sh Carol
+Hello Carol!
+$ echo $?
+0
+```
+Notice that the `echo` command on line 15 was ignored entirely. Using `exit` will end the script immediately, so this line is never encountered.
+
+### Handling Many Arguments
+So far our script can only handle a single username at a time. Any number of arguments besides one will cause an error. Let’s explore how we can make this script more versatile.
+
+A user’s first instinct might be to use more positional variables such as `$2`, `$3` and so on. Unfortunately, we can’t anticipate the number of arguments that a user might choose to use. To solve this issue, it will be helpful to introduce more built-in variables.
+
+We will modify the logic of our script. Having zero arguments should cause an error, but any other number of arguments should be successful. This new script will be called `friendly2.sh`.
+
+```
+     1	#!/bin/bash
+     2
+     3	# a friendly script to greet users
+     4
+     5	if [ $# -eq 0 ]
+     6	then
+     7	  echo "Please enter at least one user to greet."
+     8	  exit 1
+     9	else
+    10	  echo "Hello $@!"
+    11	  exit 0
+    12	fi
+```
+
+```
+$ ./friendly2.sh Carol Dave Henry
+Hello Carol Dave Henry!
+```
+
+There are two built-in variables which contain all arguments passed to the script: `$@` and `$*`. For the most part, both behave the same. Bash will parse the arguments, and separate each argument when it encounters a space between them. In effect, the contents of `$@` look like this:
+
+0 | 1 | 2
+--- | --- | ---
+Carol | Dave | Henry
+
+If you are familiar with other programming languages, you might recognize this type of variable as an array. Arrays in Bash can be created simply by putting space between elements like the variable `FILES` in script `arraytest` below:
+
+```
+FILES="/usr/sbin/accept /usr/sbin/pwck/ usr/sbin/chroot"
+```
+
+It contains a list of many items. So far this isn’t very helpful, because we have not yet introduced any way of handling these items individually.
+
+### For Loops
+Let’s refer to the `arraytest` example shown before. If you recall, in this example we are specifying an array of our own called `FILES`. What we need is a way to “unpack” this variable and access each individual value, one after the other. To do this, we will use a structure called a for loop, which is present in all programming languages. There are two variables that we will refer to: one is the range, and the other is for the individual value that we are currently working on. This is the script in its entirety:
+
+```
+#!/bin/bash
+
+FILES="/usr/sbin/accept /usr/sbin/pwck/ usr/sbin/chroot"
+
+for file in $FILES
+do
+  ls -lh $file
+done
+```
+```
+$ ./arraytest
+lrwxrwxrwx 1 root root 10 Apr 24 11:02 /usr/sbin/accept -> cupsaccept
+-rwxr-xr-x 1 root root 54K Mar 22 14:32 /usr/sbin/pwck
+-rwxr-xr-x 1 root root 43K Jan 14 07:17 /usr/sbin/chroot
+```
+
+If you refer again to the `friendly2.sh` example above, you can see that we are working with a range of values contained within a single variable `$@`. For clarity’s sake, we will call the latter variable `username`. Our script now looks like this:
+
+```
+     1	#!/bin/bash
+     2
+     3	# a friendly script to greet users
+     4
+     5	if [ $# -eq 0 ]
+     6	then
+     7	  echo "Please enter at least one user to greet."
+     8	  exit 1
+     9	else
+    10	  for username in $@
+    11	  do
+    12	    echo "Hello $username!"
+    13	  done
+    14	  exit 0
+    15	fi
+```
+
+Remember that the variable that you define here can be named whatever you wish, and that all the lines inside `do…​ done` will be executing once for each element of the array. Let’s observe the output from our script:
+```
+$ ./friendly2.sh Carol Dave Henry
+Hello Carol!
+Hello Dave!
+Hello Henry!
+```
+Now let’s assume that we want to make our output seem a little more human. We want our greeting to be on one line.
+```
+     1	#!/bin/bash
+     2
+     3	# a friendly script to greet users
+     4
+     5	if [ $# -eq 0 ]
+     6	then
+     7	  echo "Please enter at least one user to greet."
+     8	  exit 1
+     9	else
+    10	  echo -n "Hello $1"
+    11	  shift
+    12	  for username in $@
+    13	  do
+    14	    echo -n ", and $username"
+    15	  done
+    16	  echo "!"
+    17	  exit 0
+    18	fi
+```
+A couple of notes:
+
+- Using `-n` with `echo` will suppress the newline after printing. This means that all echoes will print to the same line, and the newline will be printed only after the `!` on line 16.
+
+- The `shift` command will remove the first element of our array, so that this:
+
+0 | 1 | 2
+---|---|---
+Carol | Dave | Henry
+
+Becomes this:
+
+0 | 1 
+---|---
+Dave | Henry
+
+Let’s observe the output:
+```
+$ ./friendly2.sh Carol
+Hello Carol!
+$ ./friendly2.sh Carol Dave Henry
+Hello Carol, and Dave, and Henry!
+```
+
+### Using Regular Expressions to Perform Error Checking
+It’s possible that we want to verify all arguments that the user is entering. For example, perhaps we want to ensure that all names passed to `friendly2.sh` contain only letters, and any special characters or numbers will cause an error. To perform this error checking, we will use `grep`.
+
+Recall that we can use regular expressions with `grep`.
+
+```
+$ echo Animal | grep "^[A-Za-z]*$"
+Animal
+$ echo $?
+0
+```
+```
+$ echo 4n1ml | grep "^[A-Za-z]*$"
+$ echo $?
+1
+```
+The `^` and the `$` indicate the beginning and end of the line respectively. The `[A-Za-z]` indicates a range of letters, upper or lower case. The `*` is a quantifier, and modifies our range of letters so that we are matching zero to many letters. In summary, our `grep` will succeed if the input is only letters, and fails otherwise.
+
+The next thing to note is that `grep` is returning exit codes based on whether there was a match or not. A positive match returns `0`, and a no match returns a `1`. We can use this to test our arguments inside our script.
+```
+     1	#!/bin/bash
+     2
+     3	# a friendly script to greet users
+     4
+     5	if [ $# -eq 0 ]
+     6	then
+     7	  echo "Please enter at least one user to greet."
+     8	  exit 1
+     9	else
+    10	  for username in $@
+    11	  do
+    12	    echo $username | grep "^[A-Za-z]*$" > /dev/null
+    13	    if [ $? -eq 1 ]
+    14	    then
+    15	      echo "ERROR: Names must only contains letters."
+    16	      exit 2
+    17	    else
+    18	      echo "Hello $username!"
+    19	    fi
+    20	  done
+    21	  exit 0
+    22	fi
+```
+On line 12, we are redirecting standard output to `/dev/null`, which is a simple way to suppress it. We don’t want to see any output from the `grep` command, we only want to test its exit code, which happens on line 13. Notice also that we are using an exit code of `2` to indicate an invalid argument. It is generally good practice to use different exit codes to indicate different errors; in this way, a savvy user can use these exit codes to troubleshoot.
+
+```
+$ ./friendly2.sh Carol Dave Henry
+Hello Carol!
+Hello Dave!
+Hello Henry!
+$ ./friendly2.sh 42 Carol Dave Henry
+ERROR: Names must only contains letters.
+$ echo $?
+2
+```
 
 ___
 This documentation is provided by the Linux Professional Institute
