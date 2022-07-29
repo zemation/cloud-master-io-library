@@ -978,13 +978,13 @@ Take note of the `if` statement. We have used `-eq` to do a numerical comparison
 `-gt`
 - Greater than
 
-'-ge'
+`-ge`
 - Greater than or equal to
 
-'-lt'
+`-lt`
 - Less than
 
-'-le'
+`-le`
 - Less than or equal to
 
 
