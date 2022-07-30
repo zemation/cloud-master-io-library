@@ -133,6 +133,7 @@ We can still say that the majority of desktops and laptops out there will be Win
 
 As a server platform Microsoft does now allow its customers to choose between a GUI (Graphical User Interface) and command line only version. The separation of the GUI and the command line is an important one. Most of the time the GUI of older Microsoft Servers will be loaded but no-one will use it. Consider an Active Directory Domain Controller…​ users use it all the time to authenticate to the domain, but it is managed remotely from administrators' desktops and not the server.
 
+___
 
 ## Lesson 4.2 Understanding Computer Hardware
 

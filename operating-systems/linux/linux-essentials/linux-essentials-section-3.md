@@ -285,6 +285,7 @@ $ find
 
 When adding directories to ZIP files, the `-r` option causes `zip` to include a directory’s contents. Without it, you would have an empty directory in the ZIP file.
 
+___
 
 ## Lesson 3.2 Searching and Extracting Data from Files
 In this lab we will be focusing on redirecting or transmitting information from one source to another with the help of specific tools. The Linux command line redirects the information through specific standard channels. The standard input (stdin or channel 0) of the command is considered to be the keyboard and the standard output (stdout or channel 1) is considered the screen. There is also another channel that is meant to redirect error output (stderr or channel 2) of a command or a program’s error messages. The input and/or output can be redirected.
@@ -626,6 +627,8 @@ abab2
 ```
 
 Most of the meta-characters are self-explanatory, but they can become tricky when used for the first time. The previous examples represent a small part of the regular expressions’ functionality. Try all meta-characters from the above table to understand more on how they work.
+
+___
 
 ## Lesson 3.3 Turning Commands into a Script
 We have been learning to execute commands from the shell thus far, but we can also enter commands into a file, and then set that file to be executable. When the file is executed, those commands are run one after the other. These executable files are called scripts, and they are an absolutely crucial tool for any Linux system administrator. Essentially, we can consider Bash to be a programming language as well as a shell.

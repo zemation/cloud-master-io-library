@@ -402,6 +402,7 @@ The MD5 hash function is considered cryptographically insecure with today’s (2
 ```
 From the standpoint of the LPI Linux Essentials objectives and exam, just understand the password hash for a local user is only stored in the file `/etc/shadow` which only select, authentication services can read, or the superuser can modify via other commands.
 
+___
 
 ## Lesson 5.2 Creating Users and Groups
 
@@ -663,6 +664,7 @@ Depending on the `passwd` option used, you can control specific aspects of passw
 These options are available only for root. To see the full list of options, refer to the man pages.
 
 ___
+
 ## 5.3 Managing File Permissions and Ownership
 
 Being a multi-user system, Linux needs some way to track who owns each file and whether or not a user is allowed to perform actions on that file. This is to ensure the privacy of users who might want to keep the content of their files confidential, as well as to ensure collaboration by making certain files accessible to multiple users.
@@ -1119,6 +1121,8 @@ $ ls -lh test.sh
 Tip
 If your terminal supports color, and these days most of them do, you can quickly see if these special permissions are set by glancing at the output of ls -l. For the sticky bit, the directory name might be shown in a black font with blue background. The same applies for files with the SGID (yellow background) and SUID (red background) bits. Colors may be different depending on which Linux distribution and terminal settings you use.
 ```
+
+___
 
 ## Lesson 5.4 Special Directories and Files
 

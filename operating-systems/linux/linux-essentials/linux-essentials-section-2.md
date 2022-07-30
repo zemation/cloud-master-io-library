@@ -345,6 +345,7 @@ Now our command works again.
 Tip
 The order of elements in PATH also defines the lookup order. The first matching executable found while going through the paths is executed.
 ```
+___
 
 ## Lessson 2.2 Using the Command Line to Get Help
 
