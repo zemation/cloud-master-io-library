@@ -1,5 +1,5 @@
 
-The goal of this repo is to allow growth of an central hub of technical notes and documentation to assist in users trying to further themselves in a specific technical topic.  
+The goal of this repo is to allow growth of a central hub of technical notes and documentation to assist in users trying to further themselves in a specific technical topic.  
 
 
 - 👋 Hi, This is @cloud-master-io
