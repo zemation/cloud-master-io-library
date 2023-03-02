@@ -8,11 +8,11 @@ The goal of this repo is to allow growth of a central hub of technical notes and
 
 We're in the process of building what we hope to be an extensive website for conversation about various topics we cover, question and answer amongst members, recent news about topics etc.
 
-We have 20+ years in the computer industry with Certified Professionals in Microsoft Windows, Linux, and AWS Cloud.  We believe that the education model in IT and Computer systems is broken.  However there are ways to help alleviate that if you know where to look.  
+We have 20+ years in the computer industry with Certified Professionals in Microsoft Windows, Linux, and AWS Cloud.  We believe that the post-secondary education model in IT and Computer systems is broken.  However there are ways to help alleviate that if you know where to look.  
 
 That is with certifications.  Industry Certifications allow you to focus on one subject at a time, without the cost of Post-Secondary tuition and only pay for any resources you get that have price, and the certification (unless you have a company that will purchase voucher)
 
-What we hope to do is provide supplemental material.  There already are plent of service providers and other sources that can and will provide much more detail.  We even recommend some in this repo.  Our goal has always been to get people to the resources to help them move up in their career.  
+What we hope to do is provide supplemental material.  There already are plenty of service providers and other sources that can and will provide much more detail.  We even recommend some in this repo.  Our goal has always been to get people to the resources to help them move up in their career.  
 
 In some of these topics we find that while we will try to offer this information, in some cases referring to the official documentation or white papers will provide better information.
 
