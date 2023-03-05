@@ -1,2 +1,0 @@
-### [Certified OpenStack Administrator (COA)](https://www.openstack.org/coa/)
-Open Infrastructure Foundation Certified OpenStack Administrators have the skills required to provide day-to-day operation and management of an OpenStack cloud. Candidates who pursue this Certification are required to be proficient in the content domains and competencies listed here.

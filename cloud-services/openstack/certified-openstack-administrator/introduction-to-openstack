@@ -1,0 +1,28 @@
+# OpenStack
+
+OpenStack is an open-source cloud computing platform that enables organizations to build and manage their own cloud infrastructure. It was launched in 2010 and is managed by the OpenStack Foundation, a non-profit organization that oversees the development and promotion of the platform.
+
+OpenStack provides a range of services for building and managing cloud environments, including computing, storage, networking, and identity management. These services can be customized and combined to create a cloud infrastructure that meets the specific needs of an organization.
+
+OpenStack is designed to be scalable and flexible, allowing organizations to start with a small deployment and expand as their needs grow. It is used by a wide range of organizations, from small startups to large enterprises, and is particularly popular in industries such as telecommunications, finance, and research.
+
+OpenStack is free and open-source software, meaning that anyone can download, use, and contribute to its development. This has led to a large and active community of developers and users who work together to improve and extend the platform.
+
+OpenStack can be used to create a wide range of cloud-based solutions, from small private clouds to large public clouds that serve millions of users. Some of the best use cases for OpenStack include:
+
+- Private Clouds: Organizations can use OpenStack to create their own private cloud infrastructure for internal use, providing their teams with the benefits of cloud computing while maintaining control over their data and resources.
+- Public Clouds: Service providers can use OpenStack to build public cloud services that offer computing, storage, and networking resources to customers over the internet.
+- Hybrid Clouds: OpenStack can be used to build hybrid cloud environments that combine public and private cloud resources, allowing organizations to leverage the benefits of both models.
+- NFV and Telco Clouds: OpenStack is well-suited to building network function virtualization (NFV) and telco clouds, providing the high-performance networking and compute resources required by telecommunications providers.
+- Research and Education: OpenStack is popular in the research and education sectors, where it is used to build high-performance computing clusters and cloud-based research environments.
+- Containers and Kubernetes: OpenStack can be integrated with container orchestration tools like Kubernetes to provide a complete cloud-native infrastructure for modern application development.
+
+Overall, OpenStack is a highly flexible and customizable platform that can be adapted to a wide range of cloud computing use cases, making it a popular choice for organizations of all sizes and types.
+
+### Note: Openstack has multiple versions each with their own respective documentation
+
+### [Openstack Zed](https://docs.openstack.org/zed/)
+### [Openstack Yoga](https://docs.openstack.org/yoga/)
+### [Openstack Xena](https://docs.openstack.org/xena/)
+### [Openstack Wallaby](https://docs.openstack.org/wallaby/)
+### [Openstack Victoria](https://docs.openstack.org/victoria/)
