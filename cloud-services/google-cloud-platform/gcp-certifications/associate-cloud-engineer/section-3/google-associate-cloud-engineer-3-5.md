@@ -9,6 +9,19 @@ On the other hand, a Shared VPC allows for sharing a single VPC network across m
 
 The main difference between the two is the level of control and management that the organization has over the network. With a Custom VPC, the organization has complete control over the VPC network, while with a Shared VPC, the host project controls the network, and the service projects have limited control.
 
+Here are some best practices for managing VPC networks in Google Cloud Platform:
+- Plan your VPC network architecture before creating it. Consider the number of zones, subnets, and IP addresses that you may need.
+- Use multiple subnets within a VPC network to isolate different tiers of your infrastructure. For example, you can use a subnet for your application tier and another for your database tier.
+- Use firewall rules to control inbound and outbound traffic between your VPC network and the internet. Ensure that your firewall rules are designed to be least privilege, meaning that they only allow the minimum amount of traffic necessary.
+- Use network tags to organize and manage resources within your VPC network. You can use network tags to simplify firewall rules and route traffic between instances.
+- Use Cloud NAT to allow instances on your private subnet to access the internet while still maintaining security.
+- Use Cloud VPN or Cloud Interconnect to create secure connections between your VPC network and your on-premises infrastructure.
+- Use Private Google Access to allow instances on your private subnet to access Google Cloud services like Cloud Storage, Cloud SQL, and BigQuery without having to go through the public internet.
+- Use VPC flow logs to capture network traffic metadata to monitor, troubleshoot, and analyze network activity.
+- Use auto mode or custom mode subnets carefully. Auto mode subnets are automatically created when a new region or zone is added, but they cannot be deleted. Custom mode subnets give you more control over your IP address range, but you need to manually manage them.
+- Follow the principle of least privilege when granting IAM roles to users and service accounts to ensure that only the necessary permissions are given for VPC network management.
+
+
 #### Creating a subnet in a custom VPC
 To create subnets in a custom VPC in Google Cloud Platform, you can follow these steps:
 

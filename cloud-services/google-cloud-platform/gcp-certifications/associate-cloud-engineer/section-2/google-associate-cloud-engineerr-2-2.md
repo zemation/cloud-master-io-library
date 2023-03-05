@@ -56,3 +56,15 @@ Workload requirements: Custom machine types are ideal for workloads that have sp
 Cost considerations: Custom machine types can help you optimize resource utilization and avoid overprovisioning, leading to cost savings. However, if your workload doesn't require customized configurations, you may be better off using regular VMs.
 
 Performance requirements: Custom machine types can help you achieve optimal performance by matching the specific resource requirements of your workload. However, you should ensure that your workload is compatible with custom machine types and doesn't require specific features or capabilities that are only available in regular VMs.
+
+Preemptible VMs and Spot VMs are cost-effective options for running workloads in Google Cloud Platform, but they come with the risk of being terminated by Google at any time. Here are some best practices to consider when choosing between pre-emptible and spot VMs:
+
+- Evaluate the workload: Preemptible and spot VMs are ideal for short-lived workloads or workloads that can be easily restarted without any data loss. If your workload cannot tolerate interruptions or requires long-running processes, it may be better to use standard VMs instead.
+- Test and validate: Before deploying any workload to preemptible or spot VMs, test and validate the application to ensure it can tolerate the potential interruptions that come with these VM types. Ensure that you have implemented mechanisms to handle VM termination, such as automatic scaling or automatic restarts.
+- Use a mix of VM types: Consider using a mix of preemptible or spot VMs and standard VMs in your deployment. This can help you balance cost savings with reliability and stability.
+- Monitor usage and costs: Keep a close eye on usage and costs associated with preemptible and spot VMs. Use the Google Cloud Console or the Cloud SDK to monitor usage and costs in real-time and make adjustments as necessary.
+- Utilize availability zones: When using spot VMs, consider using multiple availability zones to increase the chance of finding an available spot instance.
+- Keep instances lean: Avoid installing unnecessary software or services on your preemptible or spot VM instances. This will help reduce the time and resources required to restart or relaunch the instances if they are terminated.
+- Optimize resource utilization: Optimize resource utilization of preemptible or spot VM instances to maximize cost savings. This includes optimizing CPU and memory utilization, using efficient data storage and network usage, and minimizing data transfer costs.
+
+By following these best practices, you can take advantage of the cost savings offered by preemptible and spot VMs while still ensuring reliable and stable performance for your workloads.

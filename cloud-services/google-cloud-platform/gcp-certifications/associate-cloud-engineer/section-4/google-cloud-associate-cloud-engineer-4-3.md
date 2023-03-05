@@ -51,3 +51,27 @@ Google Cloud Run is a fully managed serverless platform for running containerize
 You should consider using Cloud Run for Anthos when you have an existing Kubernetes cluster on-premises or on a cloud, and you want to use a consistent platform across different environments. This allows you to run containerized applications with the same API and developer experience as Cloud Run, but on a Kubernetes environment.
 
 In contrast, you should consider using fully managed Cloud Run when you want to focus on building and deploying applications without managing the underlying infrastructure. Fully managed Cloud Run takes care of scaling, updating, and securing the application, and charges based on the number of requests and the duration of the function.
+
+Here are some best practices for using Cloud Run on Google Cloud Platform:
+- Optimize container image size: Cloud Run scales containers based on the number of requests received. Optimizing the size of the container image can help reduce startup time and improve overall performance.
+- Use environment variables: Store configuration settings in environment variables instead of hardcoding values in the container image. This makes it easier to manage and update configurations without rebuilding the container image.
+- Set resource limits: Set resource limits for your services to prevent them from consuming too much CPU or memory. This can help prevent performance issues and ensure that other services on the same host are not impacted.
+- Use service accounts: Use service accounts to grant permissions to your Cloud Run services instead of using user accounts. This improves security and reduces the risk of unauthorized access.
+- Enable logging and monitoring: Enable logging and monitoring to capture metrics and diagnose issues. You can use Cloud Logging and Cloud Monitoring to monitor and diagnose your Cloud Run services.
+- Implement proper authentication and authorization: Implement proper authentication and authorization for your Cloud Run services. Use Identity and Access Management (IAM) to control who has access to your services and what actions they can perform.
+- Use HTTPS: Use HTTPS to secure communication between clients and your Cloud Run services. You can use Google-managed SSL certificates or bring your own certificates.
+- Configure autoscaling: Configure autoscaling to ensure that your services can handle fluctuations in traffic. You can set autoscaling policies based on CPU utilization, memory usage, or requests per second.
+- Implement caching: Implement caching to improve the performance of your Cloud Run services. You can use Cloud Memorystore for Redis to store and retrieve cached data.
+- Test and deploy with automation: Use automation to test and deploy your Cloud Run services. This can help ensure that your services are reliable and performant, and that changes are deployed safely and quickly.
+
+Cloud Run for Anthos is a managed service that allows you to run containerized applications on Anthos clusters. Here are some best practices for using Cloud Run for Anthos in Google Cloud Platform:
+- Use namespaces: Namespaces allow you to isolate resources within a cluster. Use namespaces to organize your workloads and manage access control.
+- Use service accounts: Cloud Run for Anthos uses service accounts to authorize access to other Google Cloud services. Use a separate service account for each workload to ensure least privilege.
+- Use pod anti-affinity: Pod anti-affinity ensures that pods are scheduled onto different nodes in the cluster, which improves availability.
+- Use horizontal pod autoscaling (HPA): HPA automatically scales your pods up or down based on demand. Use HPA to ensure that your workloads are responsive to traffic spikes.
+- Use Istio: Istio is an open-source service mesh that provides traffic management, security, and observability features. Use Istio to manage traffic between services and secure communications.
+- Use Stackdriver Logging and Monitoring: Stackdriver Logging and Monitoring allow you to view logs and metrics for your applications running on Cloud Run for Anthos. Use Stackdriver to troubleshoot issues and gain insights into your applications.
+- Use Config Connector: Config Connector allows you to manage Google Cloud resources as Kubernetes objects. Use Config Connector to manage your Cloud Run for Anthos resources alongside your Kubernetes resources.
+- Use GitOps: GitOps is a development methodology that uses Git as a source of truth for configuration and deployment. Use GitOps to manage your Cloud Run for Anthos resources and ensure that your infrastructure is version controlled.
+- Use security best practices: Follow security best practices, such as using secure container images, enabling network security policies, and enabling automatic security updates, to ensure that your workloads are secure.
+- Use versioned APIs: Versioned APIs ensure that your workloads are not affected by breaking changes in the API. Use versioned APIs to ensure compatibility and maintainability.
