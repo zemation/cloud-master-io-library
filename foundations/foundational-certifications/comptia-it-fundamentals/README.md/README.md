@@ -15,7 +15,7 @@ The CompTIA IT Fundamentals exam focuses on the essential IT skills and knowledg
 
 This exam is intended for candidates who are advanced end users and/or are considering a career in IT. The exam is also a good fit for individuals interested in pursuing professional-level certifications, such as A+.
 
-# Concepts and Terminology
+# 1.0 Concepts and Terminology
 
 ## 1.1 Compare and contrast notational systems
 ### Notational Systems
@@ -563,8 +563,7 @@ This exam is intended for candidates who are advanced end users and/or are consi
 | APIPA | Automatic Private Internet Protocol |Addressing
 | ARM | Advanced RISC Machines |
 | ARP | Address Resolution Protocol |
-| ASCII | American Standard Code
-for Information Interchange | 
+| ASCII | American Standard Code for Information Interchange | 
 | BD-ROM | Blu-ray Disc-Read-Only Memory |
 | BIOS | Basic Input/Output System |
 | CAD | Computer-Aided Design |
