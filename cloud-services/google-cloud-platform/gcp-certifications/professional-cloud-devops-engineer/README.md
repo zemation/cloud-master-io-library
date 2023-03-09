@@ -17,10 +17,10 @@ Professional Cloud DevOps Engineers implement processes throughout the systems d
 #### 1.1 Balance change, velocity, and reliability of the service:
 
 - Discover SLIs (e.g., availability, latency)
--  Define SLOs and understand SLAs
--  Agree to consequences of not meeting the error budget
--  Construct feedback loops to decide what to build next
--  Eliminate toil via automation
+- Define SLOs and understand SLAs
+- Agree to consequences of not meeting the error budget
+- Construct feedback loops to decide what to build next
+- Eliminate toil via automation
 
 #### 1.2 Manage service life cycle:
 
