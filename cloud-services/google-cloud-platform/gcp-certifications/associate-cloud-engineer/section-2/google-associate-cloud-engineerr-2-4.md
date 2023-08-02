@@ -1,4 +1,4 @@
-## Planning and configuring network resoources
+## Planning and configuring network resources
 A VPC (Virtual Private Cloud) in Google Cloud Platform is a virtual network that provides a secure and isolated environment for resources such as VM instances, containers, and storage. It allows you to control the IP address range, subnets, and network traffic of your cloud resources.
 
 In addition to VPCs, Google Cloud Platform provides several network options for managing traffic and connectivity:
